@@ -3,8 +3,7 @@ include_once '../configLib.php';
 include_once './Estructura/header.php';
 ?>
 <div class="main-container w-100 p-4 d-flex justify-content-center" style="background: linear-gradient(#699676, white)">
-    <div class="container border rounded shadow-lg p-4 bg-white" style="max-width: 1200px;">
-        
+    <div class="container border rounded shadow-lg p-4 bg-white" style="max-width: 1100px;">
         <div class="text-center mb-4">
             <h2 class="fw-bold text-uppercase" style="font-size: 28px">Laminas/Hydrator</h2>
             <p class="text-muted" style="font-size: 20px">Una breve introducción a Laminas/Hydrator y su uso.</p>
