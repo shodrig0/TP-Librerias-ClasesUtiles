@@ -1,0 +1,12 @@
+{
+    "require": {
+        "laminas/laminas-hydrator": "^4.15",
+        "catfan/medoo": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "model\\": "TPLibs/model/",
+            "controller\\": "TPLibs/controller/"
+        }
+    }
+}
