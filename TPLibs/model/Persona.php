@@ -61,8 +61,6 @@ class Persona
         $personaDatos = BaseDatos::getInstance()->get('usuario', '*', ['legajo' => $legajo]);
         if ($personaDatos) {
             $rta = $this->hydrator->hydrate($personaDatos, $this);
-        } else {
-            throw new \Exception("No se encontraron resultados");
         }
         return $rta;
     }

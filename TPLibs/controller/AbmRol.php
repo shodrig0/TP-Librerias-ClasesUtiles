@@ -4,7 +4,6 @@ namespace controller;
 
 use model\Rol;
 use Laminas\Hydrator\ClassMethodsHydrator;
-use Exception;
 use PDOException;
 
 class AbmRol
@@ -38,25 +37,23 @@ class AbmRol
         $mensaje = '';
         $rolModelo = $this->datosObjRol();
         $datos = $this->hydrator->extract($rolModelo);
-        // Verificamos si ya existe un rol con ese nombre antes de insertarlo
-        if (isset($datos['nombre'])) {
-            $rolExistente = $this->buscarRol($datos['nombre']);
-            if ($rolExistente) {
-                $mensaje = 'Error: El rol ya existe en la base de datos.';
+        try {
+            if (isset($datos['nombre']) && $this->buscarRol($datos['nombre'])) {
+                $mensaje = 'Error: El rol con ese nombre ya existe.';
             } else {
                 $resultado = $rolModelo->insertar($datos);
                 if ($resultado) {
                     $mensaje = 'Éxito';
                 } else {
-                    $mensaje = 'Error: No se pudo agregar el rol.';
+                    $mensaje = 'Error';
                 }
             }
+        } catch (PDOException $e) {
+            $mensaje = 'Error: ' . $e->getMessage();
         }
 
         return $mensaje;
     }
-
-
 
     public function eliminarRol()
     {
@@ -78,7 +75,7 @@ class AbmRol
             } else {
                 $msj = 'Error: ' . $e->getMessage();
             }
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             $msj = 'Error: ' . $e->getMessage();
         }
         return $msj;
@@ -87,9 +84,17 @@ class AbmRol
     public function listarRoles($condicion = null)
     {
         $rolModelo = $this->datosObjRol();
-        $resultado = $condicion ? $rolModelo->listar($condicion) : $rolModelo->listar();
+        $resultado = null;
+
+        try {
+            $resultado = $condicion ? $rolModelo->listar($condicion) : $rolModelo->listar();
+        } catch (\PDOException $e) {
+            throw new PDOException("Error al listar roles: " . $e->getMessage());
+        }
+
         return $resultado;
     }
+
 
     private function datosObjRol()
     {

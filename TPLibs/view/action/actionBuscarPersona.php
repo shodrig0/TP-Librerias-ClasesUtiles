@@ -45,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Generar opciones dinámicas para roles
         foreach ($roles as $rol) {
-            echo $i + 1;
             $selected = ($rol->getId() == $idRolActual) ? 'selected' : '';
             $msj .= '<option value="' . $rol->getId() . '" ' . $selected . '>' . htmlspecialchars($rol->getNombre()) . '</option>';
         }

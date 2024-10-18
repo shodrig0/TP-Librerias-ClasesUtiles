@@ -6,6 +6,7 @@ use PDOException;
 use model\Persona;
 use model\Rol;
 use Laminas\Hydrator\ClassMethodsHydrator;
+use PDO;
 
 class AbmPersona
 {
@@ -18,68 +19,49 @@ class AbmPersona
 
     public function buscarPersona($legajo)
     {
-        $rta = null;
+        $msj = null;
         $personaModelo = new Persona();
-        $resultado = $personaModelo->buscar($legajo);
 
-        if ($resultado) {
-            $rolObj = $personaModelo->getObjRol();
-            if (!$rolObj) {
-                $rolObj = new Rol();
-                $personaModelo->setObjRol($rolObj);
-            }
-
-            // --- Manejo de Rol ---
-            $idRol = $rolObj->getId();
-            if ($idRol) {
-                $rol = new Rol();
-                $datosRol = $rol->buscar($idRol);
-                if ($datosRol) {
-                    $this->hydrator->hydrate($datosRol, $rolObj);
+        try {
+            $resultado = $personaModelo->buscar($legajo);
+            if ($resultado) {
+                $rolObj = $personaModelo->getObjRol();
+                // si no hay rol asignado
+                if (!$rolObj) {
+                    $rolObj = new Rol();
+                    $personaModelo->setObjRol($rolObj);
                 }
-            }
+                $idRol = $rolObj->getId();
+                if ($idRol) {
+                    $rol = new Rol();
+                    $datosRol = $rol->buscar($idRol);
 
-            $rta = $personaModelo;
+                    if ($datosRol) {
+                        $this->hydrator->hydrate($datosRol, $rolObj);
+                    } else {
+                        $rolObj = null;
+                    }
+                }
+                $msj = $personaModelo;
+            }
+        } catch (PDOException $e) {
+            throw new PDOException('Error al buscar la persona: ' . $e->getMessage());
         }
-        return $rta;
+        return $msj;
     }
+
 
     public function agregarPersona()
     {
         $mensaje = '';
-        $personaModelo = $this->datosObjPersona();
-        $datos = $this->hydrator->extract($personaModelo);
+        try {
+            $personaModelo = $this->datosObjPersona();
+            $datos = $this->hydrator->extract($personaModelo);
 
-        if (isset($datos['legajo'])) {
-            unset($datos['legajo']);
-        }
-
-        if (isset($datos['obj_rol'])) {
-            $rol = $datos['obj_rol'];
-            if ($rol instanceof Rol && $rol->getId()) {
-                $datos['rol'] = $rol->getId();
+            if (isset($datos['legajo'])) {
+                unset($datos['legajo']);
             }
-            unset($datos['obj_rol']);
-        }
 
-        $resultado = $personaModelo->insertar($datos);
-
-        if ($resultado) {
-            $mensaje = 'Éxito';
-        } else {
-            $mensaje = 'Error al insertar la persona.';
-        }
-
-        return $mensaje;
-    }
-
-    public function modificarPersona()
-    {
-        $msj = '';
-        $personaModelo = $this->datosObjPersona();
-        $datos = $this->hydrator->extract($personaModelo);
-
-        if (isset($datos['legajo']) && is_numeric($datos['legajo'])) {
             if (isset($datos['obj_rol'])) {
                 $rol = $datos['obj_rol'];
                 if ($rol instanceof Rol && $rol->getId()) {
@@ -87,51 +69,90 @@ class AbmPersona
                 }
                 unset($datos['obj_rol']);
             }
-            if ($personaModelo->actualizar($datos)) {
-                $msj = 'Éxito';
+
+            $resultado = $personaModelo->insertar($datos);
+
+            if ($resultado) {
+                $mensaje = 'Éxito';
+            } else {
+                $mensaje = 'Error';
+            }
+        } catch (PDOException $e) {
+            $mensaje = 'Error: ' . $e->getMessage();
+        }
+
+        return $mensaje;
+    }
+
+
+    public function modificarPersona()
+    {
+        $msj = '';
+        try {
+            $personaModelo = $this->datosObjPersona();
+            $datos = $this->hydrator->extract($personaModelo);
+
+            if (isset($datos['legajo']) && is_numeric($datos['legajo'])) {
+                if (isset($datos['obj_rol'])) {
+                    $rol = $datos['obj_rol'];
+                    if ($rol instanceof Rol && $rol->getId()) {
+                        $datos['rol'] = $rol->getId();
+                    }
+                    unset($datos['obj_rol']);
+                }
+                if ($personaModelo->actualizar($datos)) {
+                    $msj = 'Éxito';
+                } else {
+                    $msj = 'Error';
+                }
             } else {
                 $msj = 'Error';
             }
-        } else {
-            $msj = 'Error';
+        } catch (PDOException $e) {
+            $msj = 'Error grave: ' . $e->getMessage();
         }
-
         return $msj;
     }
+
 
     public function listarPersonas($condicion = null)
     {
         $personaModelo = new Persona();
         $resultado = [];
-        if ($condicion !== null) {
-            $resultado = $personaModelo->listar($condicion);
-        } else {
-            $resultado = $personaModelo->listar();
+
+        try {
+            $resultado = $condicion ? $personaModelo->listar($condicion) : $personaModelo->listar();
+        } catch (PDOException $e) {
+            throw new PDOException('Error al listar personas: ' . $e->getMessage());
         }
         return $resultado;
     }
 
     public function eliminarPersona()
     {
+        $msj = '';
+
         try {
             $personaModelo = $this->datosObjPersona();
             $datos = $this->hydrator->extract($personaModelo);
-            $legajo = $datos['legajo'];
+            $legajo = $datos['legajo'] ?? null;
 
             if ($legajo !== null) {
                 $resultado = $personaModelo->eliminar($legajo);
                 if ($resultado) {
-                    return 'Éxito';
+                    $msj = 'Éxito';
                 } else {
-                    return 'Error';
+                    $msj = 'Error';
                 }
+            } else {
+                $msj = 'Error';
             }
         } catch (PDOException $e) {
-            return $e->getMessage();
+            $msj = 'Error de base de datos: ' . $e->getMessage();
         }
-
-        return 'Error';
+        return $msj;
     }
+
 
     private function datosObjPersona()
     {
