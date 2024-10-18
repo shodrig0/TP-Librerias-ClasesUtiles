@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Rol actual
         $rolActual = $resp->getObjRol();
+        // var_dump($rolActual);
         $idRolActual = $rolActual ? $rolActual->getId() : null;
-        $roles = $objAbmRol->listarRoles(); // Lista de roles dinámicos
+        $roles = $objAbmRol->listarRoles(); //  roles dinámicos
 
-        // Crear formulario con un diseño visual mejorado
         $msj = '
         <form onsubmit="return validar()" action="actionActualizarPersona.php" method="POST" class="bg-light p-4 rounded shadow-sm">
             <div class="mb-4">
@@ -43,10 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="rol" class="form-label fw-bold">Rol:</label>
                 <select class="form-select" name="rol" id="rol">';
 
-        // Generar opciones dinámicas para roles
+
+
         foreach ($roles as $rol) {
             $selected = ($rol->getId() == $idRolActual) ? 'selected' : '';
-            $msj .= '<option value="' . $rol->getId() . '" ' . $selected . '>' . htmlspecialchars($rol->getNombre()) . '</option>';
+
+            $msj .= '<option value="' . $rol->getId() . '" ' . $selected . '>'
+                . htmlspecialchars($rol->getNombre())
+                . '</option>';
         }
 
         $msj .= '</select>

@@ -26,12 +26,16 @@ class AbmPersona
             $resultado = $personaModelo->buscar($legajo);
             if ($resultado) {
                 $rolObj = $personaModelo->getObjRol();
-                // si no hay rol asignado
+
+                // Si no hay rol asignado, creamos uno vacío
                 if (!$rolObj) {
                     $rolObj = new Rol();
                     $personaModelo->setObjRol($rolObj);
                 }
+
                 $idRol = $rolObj->getId();
+
+
                 if ($idRol) {
                     $rol = new Rol();
                     $datosRol = $rol->buscar($idRol);
@@ -42,14 +46,15 @@ class AbmPersona
                         $rolObj = null;
                     }
                 }
+
                 $msj = $personaModelo;
             }
         } catch (PDOException $e) {
             throw new PDOException('Error al buscar la persona: ' . $e->getMessage());
         }
+
         return $msj;
     }
-
 
     public function agregarPersona()
     {

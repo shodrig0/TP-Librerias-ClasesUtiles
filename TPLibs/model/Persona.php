@@ -57,12 +57,18 @@ class Persona
 
     public function buscar($legajo)
     {
-        $rta = false;
         $personaDatos = BaseDatos::getInstance()->get('usuario', '*', ['legajo' => $legajo]);
+        $resultado = false;
+
         if ($personaDatos) {
-            $rta = $this->hydrator->hydrate($personaDatos, $this);
+            $this->hydrator->hydrate($personaDatos, $this);
+
+            $this->setObjRol($this->hidratarRol($personaDatos['rol'] ?? null));
+
+            $resultado = true;
         }
-        return $rta;
+
+        return $resultado;
     }
 
     public function listar($condicion = "")
@@ -129,5 +135,20 @@ class Persona
             throw new \Exception("No se pudo eliminar el registro");
         }
         return $obj;
+    }
+
+    /**
+     * funcion de apoyo para pasar el id del rol a un objeto Rol desde la persona
+     */
+    private function hidratarRol($idRol)
+    {
+        $rol = new Rol();
+        if ($idRol) {
+            $rolDatos = $rol->buscar($idRol);
+            if ($rolDatos) {
+                $this->hydrator->hydrate($rolDatos, $rol);
+            }
+        }
+        return $rol;
     }
 }
