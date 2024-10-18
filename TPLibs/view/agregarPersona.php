@@ -23,6 +23,7 @@ $arrayRoles = $objAbmRol->listarRoles();
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre y Apellido:</label>
                     <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Rodrigo Villablanca">
+                    <div id="personaNombre"></div>
                 </div>
                 <div class="mb-4">
                     <label for="rol" class="form-label">Rol:</label>
@@ -34,17 +35,19 @@ $arrayRoles = $objAbmRol->listarRoles();
                             </option>
                         <?php endforeach; ?>
                     </select>
+                    <div id="personaRol"></div>
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success">Agregar</button>
                     <a href="../" class="btn btn-secondary">
-                        << Volver>>
+                        Volver
                     </a>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="js/validarPersona.js"></script>
 <?php
 include_once '../../Vista/Estructura/footer.php';
 ?>

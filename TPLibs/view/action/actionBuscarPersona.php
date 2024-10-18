@@ -76,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
     <a href="../buscarPersona.php" class="btn btn-secondary mt-3 fs-5">Volver</a>
 </div>
+<script src="../js/validarActualizarPersona.js"></script>
 <?php
 include_once '../../../Vista/Estructura/footer.php';
 ?>

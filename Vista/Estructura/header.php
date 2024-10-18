@@ -15,6 +15,7 @@ $baseURL = $protocolo . $host . $rutaProyecto;
     <link rel="icon" href="<?php echo $baseURL . '/Vista/assets/img/navegador.png' ?>">
     <title>Trabajos Prácticos - Grupo 17</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="<?php echo $baseURL . "/TP3/EJ3/Vista/js/validacion.js"; ?>"></script>
     <link rel="stylesheet" href="<?php echo $baseURL . "/Vista/css/style.css"; ?>">
     <link rel="stylesheet" href="<?php echo $baseURL . "/node_modules/bootstrap/dist/css/bootstrap.css"; ?>">
     <link rel="stylesheet" href="<?php echo $baseURL . "/node_modules/bootstrap/dist/css/init.css"; ?>">
@@ -29,7 +30,7 @@ $baseURL = $protocolo . $host . $rutaProyecto;
                     <ul class="nav justify-content-around list-unstyled">
                         <li class="nav-item"><a href="<?php echo $baseURL . "/index.php"; ?>" class="nav-link">Inicio</a></li>
                         <li class="nav-item"><a href="<?php echo $baseURL . "/Vista/medoo.php"; ?>" class="nav-link">MeDoo</a></li>
-                        <li class="nav-item"><a href="<?php echo $baseURL . "/Vista/hydrate.php"; ?>" class="nav-link">Hydrate</a></li>
+                        <li class="nav-item"><a href="<?php echo $baseURL . "/Vista/hydrate.php"; ?>" class="nav-link">Hydrator</a></li>
                         <li class="nav-item"><a href="<?php echo $baseURL . "/TPLibs/index.php"; ?>" class="nav-link">Implementación</a></li>
                     </ul>
                 </nav>
