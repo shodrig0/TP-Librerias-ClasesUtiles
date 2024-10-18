@@ -4,7 +4,7 @@ include_once './Vista/Estructura/header.php';
 ?>
 <div class="main-container w-100 p-4 d-flex justify-content-center" style="background: linear-gradient(#699676, white)">
     <div class="container border rounded shadow-lg p-4 bg-white" style="max-width: 1200px;">
-        
+
         <div class="text-center mb-4">
             <h5 class="fw-bold text-uppercase" style="font-size: 23px">Investigación de Librerías</h5>
             <h6 class="text-muted" style="font-size: 20px">Medoo - Laminas/Hydrator</h6>
@@ -20,7 +20,7 @@ include_once './Vista/Estructura/header.php';
                         <img src="Vista/assets/img/medoo-logo.png" class="mb-3" alt="Medoo Logo" style="width: 150px; height: 150px;">
                         <h5 class="card-title fw-bold">Medoo/Medoo</h5>
                         <p class="card-text text-muted" style="font-size: 17px">
-                            Medoo es una micro-ORM para PHP que simplifica las interacciones con bases de datos, 
+                            Medoo es una micro-ORM para PHP que simplifica las interacciones con bases de datos,
                             permitiendo consultas más eficientes y reduciendo la complejidad de trabajar con SQL.
                         </p>
                         <ul class="text-start list-unstyled">
@@ -29,7 +29,7 @@ include_once './Vista/Estructura/header.php';
                             <li>✔ Perfecto para proyectos pequeños</li>
                         </ul>
                     </div>
-                    <a href="https://medoo.in/doc" class="btn btn-outline-success w-100">Ver Documentación</a>
+                    <a href="https://medoo.in/doc" class="btn btn-outline-success w-100" target="_blank">Ver Documentación</a>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@ include_once './Vista/Estructura/header.php';
                         <img src="Vista/assets/img/hydrator-logo.png" class="mb-3" alt="Hydrator Logo" style="width: 130px; height: 150px;">
                         <h5 class="card-title fw-bold">Laminas/Hydrator</h5>
                         <p class="card-text text-muted" style="font-size: 17px">
-                            Laminas/Hydrator es parte del ecosistema Laminas, enfocado en transformar datos entre 
+                            Laminas/Hydrator es parte del ecosistema Laminas, enfocado en transformar datos entre
                             estructuras de objetos y arrays o bases de datos.
                         </p>
                         <ul class="text-start list-unstyled">
@@ -49,7 +49,7 @@ include_once './Vista/Estructura/header.php';
                             <li>✔ Ideal para aplicaciones grandes</li>
                         </ul>
                     </div>
-                    <a href="https://docs.laminas.dev/laminas-hydrator/" class="btn btn-outline-success w-100">Ver Documentación</a>
+                    <a href="https://docs.laminas.dev/laminas-hydrator/" class="btn btn-outline-success w-100" target="_blank">Ver Documentación</a>
                 </div>
             </div>
         </div>

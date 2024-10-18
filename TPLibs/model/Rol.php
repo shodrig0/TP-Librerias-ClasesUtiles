@@ -43,8 +43,12 @@ class Rol
         $rolDatos = [];
         $rta = null;
 
-        $rolDatos = BaseDatos::getInstance()->get('rol', '*', ['id' => $dato]);
-
+        $rolDatos = BaseDatos::getInstance()->get('rol', '*', [
+            'OR' => [
+                'id' => $dato,
+                'nombre' => $dato
+            ]
+        ]);
 
         if ($rolDatos) {
             $this->hydrator->hydrate($rolDatos, $this);
@@ -69,6 +73,8 @@ class Rol
                 $this->hydrator->hydrate($fila, $objRol);
                 $arrObjs[] = $objRol;
             }
+        } else {
+            throw new \Exception("No se encontraron resultados");
         }
         return $arrObjs;
     }
@@ -81,6 +87,8 @@ class Rol
 
         if ($insertResultado) {
             $resp = true;
+        } else {
+            throw new \Exception("No se pudo insertar el rol");
         }
         return $resp;
     }
@@ -92,6 +100,8 @@ class Rol
         $filaAfec = $idEncontrado->rowCount() > 0;
         if ($filaAfec) {
             $resp = true;
+        } else {
+            throw new \Exception("No se pudo eliminar el rol");
         }
         return $resp;
     }

@@ -1,5 +1,5 @@
-
-.card-body h6, .card-body a {
+.card-body h6,
+.card-body a {
     font-size: 0.8rem;
 }
 
@@ -13,9 +13,10 @@
 
 .nav-link {
     border-radius: 15px;
-    text-decoration: none; 
-    padding-left: 25px !important; padding-right: 25px !important;
-    color: #5C5B63 !important; 
+    text-decoration: none;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    color: #5C5B63 !important;
     font-size: 13px !important;
     padding: 0 10px;
 }
@@ -26,7 +27,8 @@
     transform: scale(1.1);
     transition: 0.1s;
 }
-.nav-link:not(:hover){
+
+.nav-link:not(:hover) {
     transform: scale(1) rotate(0deg);
     transition: 0.1s;
 }
@@ -39,4 +41,9 @@
 .current-nav-link {
     color: #ffffff !important;
     background-color: #699676 !important;
+}
+
+.prueba {
+    object-fit: contain;
+    aspect-ratio: 4/3;
 }

@@ -61,6 +61,8 @@ class Persona
         $personaDatos = BaseDatos::getInstance()->get('usuario', '*', ['legajo' => $legajo]);
         if ($personaDatos) {
             $rta = $this->hydrator->hydrate($personaDatos, $this);
+        } else {
+            throw new \Exception("No se encontraron resultados");
         }
         return $rta;
     }
@@ -101,6 +103,9 @@ class Persona
     {
         $database = BaseDatos::getInstance();
         $insertResultado = $database->insert('usuario', $param);
+        if (!$insertResultado) {
+            throw new \Exception("No se pudo insertar el registro");
+        }
 
         return $insertResultado;
     }
@@ -111,6 +116,8 @@ class Persona
         $resultado = false;
         if ($database->has('usuario', ['legajo' => $param['legajo']])) {
             $resultado = $database->update('usuario', $param, ['legajo' => $param['legajo']])->rowCount() > 0;
+        } else {
+            throw new \Exception("No se encontró el registro a actualizar");
         }
 
         return $resultado;
@@ -120,6 +127,9 @@ class Persona
     {
         $legajoEncontrado = BaseDatos::getInstance()->delete('usuario', ['legajo' => $legajo]);
         $obj = $legajoEncontrado->rowCount() > 0;
+        if (!$obj) {
+            throw new \Exception("No se pudo eliminar el registro");
+        }
         return $obj;
     }
 }

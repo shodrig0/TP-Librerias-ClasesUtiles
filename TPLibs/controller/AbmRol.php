@@ -5,6 +5,7 @@ namespace controller;
 use model\Rol;
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Exception;
+use PDOException;
 
 class AbmRol
 {
@@ -19,12 +20,15 @@ class AbmRol
     {
         $rolModelo = new Rol();
         $rolExistente = null;
-        $resultado = $rolModelo->buscar($dato);
-
-        if ($resultado) {
-            // Hidratamos el modelo con los datos obtenidos
-            $this->hydrator->hydrate($resultado, $rolModelo);
-            $rolExistente = $rolModelo;
+        try {
+            $resultado = $rolModelo->buscar($dato);
+            if ($resultado) {
+                // Hidratamos el modelo con los datos obtenidos
+                $this->hydrator->hydrate($resultado, $rolModelo);
+                $rolExistente = $rolModelo;
+            }
+        } catch (PDOException $e) {
+            throw new PDOException('Error' . $e->getMessage());
         }
         return $rolExistente;
     }

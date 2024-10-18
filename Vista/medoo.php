@@ -4,7 +4,7 @@ include_once './Estructura/header.php';
 ?>
 <div class="main-container w-100 p-4 d-flex justify-content-center" style="background: linear-gradient(#699676, white)">
     <div class="container border rounded shadow-lg p-4 bg-white" style="max-width: 1100px;">
-        
+
         <div class="text-center mb-4">
             <h2 class="fw-bold text-uppercase" style="font-size: 28px">Medoo</h2>
             <p class="text-muted" style="font-size: 20px">Una breve introducción a Medoo y su uso.</p>
@@ -88,43 +88,43 @@ echo $data[0]['email'];
         </div>
 
         <div class="row justify-content-center">
-    <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card text-center border-0 shadow-sm h-100">
-            <img src="assets/img/bd-medoo.png" class="card-img-top" alt="Medoo Ejemplo 1" style="height: 250px; width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Conexión Simple</h5>
-                <p class="card-text text-muted" style="font-size: 16px">
-                    Con Medoo, realizar una conexión a la base de datos es extremadamente sencillo. Solo necesitas instanciar la clase Medoo y pasar los parámetros de configuración.
-                </p>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <img src="assets/img/bd-medoo.png" class="card-img-top prueba" alt="Medoo Ejemplo 1" style="height: 250px; width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Conexión Simple</h5>
+                        <p class="card-text text-muted" style="font-size: 16px">
+                            Con Medoo, realizar una conexión a la base de datos es extremadamente sencillo. Solo necesitas instanciar la clase Medoo y pasar los parámetros de configuración. Podes usarlo con conexión del tipo PDO o MySQLi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <img src="assets/img/buscar.png" class="card-img-top prueba" alt="Medoo Ejemplo 2" style="height: 250px; width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Consulta SQL Simplificada</h5>
+                        <p class="card-text text-muted" style="font-size: 16px">
+                            Medoo permite realizar consultas SQL utilizando arrays asociativos. Esto simplifica el proceso y lo hace más intuitivo para desarrolladores que ya están familiarizados con arrays en PHP.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <img src="assets/img/Insert.png" class="card-img-top prueba" alt="Medoo Ejemplo 3" style="height: 250px; width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Inserción de Datos</h5>
+                        <p class="card-text text-muted" style="font-size: 16px">
+                            Insertar datos en una base de datos con Medoo es tan sencillo como pasar un array de datos a la función insert, lo que te permite concentrarte más en la lógica de tu aplicación que en los detalles técnicos.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card text-center border-0 shadow-sm h-100">
-            <img src="assets/img/buscar.png" class="card-img-top" alt="Medoo Ejemplo 2" style="height: 250px; width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Consulta SQL Simplificada</h5>
-                <p class="card-text text-muted" style="font-size: 16px">
-                    Medoo permite realizar consultas SQL utilizando arrays asociativos. Esto simplifica el proceso y lo hace más intuitivo para desarrolladores que ya están familiarizados con arrays en PHP.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card text-center border-0 shadow-sm h-100">
-            <img src="assets/img/Insert.png" class="card-img-top" alt="Medoo Ejemplo 3" style="height: 250px; width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Inserción de Datos</h5>
-                <p class="card-text text-muted" style="font-size: 16px">
-                    Insertar datos en una base de datos con Medoo es tan sencillo como pasar un array de datos a la función insert, lo que te permite concentrarte más en la lógica de tu aplicación que en los detalles técnicos.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-include_once './Estructura/footer.php';
-?>
+        <?php
+        include_once './Estructura/footer.php';
+        ?>
