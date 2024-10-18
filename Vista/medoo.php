@@ -26,7 +26,7 @@ include_once './Estructura/header.php';
 
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card text-center border-0 shadow-sm h-100">
-                    <img src="" class="card-img-top" alt="Medoo Ejemplo 2" style="height: 400px width:400px ;">
+                    <img src="assets/img/buscar.png" class="card-img-top" alt="Medoo Ejemplo 2" style="height: 400px width:400px ;">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Consulta SQL Simplificada</h5>
                         <p class="card-text text-muted" style="font-size: 16px">
@@ -39,11 +39,11 @@ include_once './Estructura/header.php';
 
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card text-center border-0 shadow-sm h-100">
-                    <img src="" class="card-img-top" alt="Medoo Ejemplo 3" style="height: 400px width:400px">
+                    <img src="assets/img/Insert.png" class="card-img-top" alt="Medoo Ejemplo 3" style="height: 400px width:400px">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Inserción de Datos</h5>
                         <p class="card-text text-muted" style="font-size: 16px">
-                            Medoo facilita la inserción de datos en la base de datos. Se puedes realizar operaciones de inserción usando un array que asocia las columnas con los valores.
+                        Medoo permite insertar datos en la base de datos de manera sencilla. La función insertar recibe un array con los datos del usuario y los inserta en la tabla 'usuario'. Retorna el resultado de la operación, indicando si la inserción fue exitosa.
                         </p>
                     </div>
                 </div>

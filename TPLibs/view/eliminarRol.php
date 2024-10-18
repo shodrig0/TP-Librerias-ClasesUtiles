@@ -20,7 +20,7 @@ $arrayRoles = $objAbmRol->listarRoles();
                         <tr>
                             <td class="ps-3 py-3 d-flex justify-content-between align-items-center">
                                 <?php echo $rol->getNombre(); ?>
-                                <form action="./action/actionEliminarRol.php" method="post">
+                                <form onsubmit="return validar()" action="./action/actionEliminarRol.php" method="post">
                                     <button type="submit" class="btn btn-danger me-2" name="id" id="id" value="<?php echo $rol->getId()?>">Eliminar</button>
                                 </form>
                             </td>
@@ -34,7 +34,7 @@ $arrayRoles = $objAbmRol->listarRoles();
         </div>
     </div>
 </div>
-
+<script src="js/validarEliminarRol.js"></script>
 <?php 
 include_once '../../Vista/Estructura/footer.php';
 ?>

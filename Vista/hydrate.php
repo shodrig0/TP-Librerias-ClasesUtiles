@@ -14,7 +14,7 @@ include_once './Estructura/header.php';
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card text-center border-0 shadow-sm h-100">
-                    <img src="hydrateee.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="height: 200px; width: 368px;">
+                    <img src="assets/img/hidratacion.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="height: 200px; width: 368px;">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Transformación de Datos</h5>
                         <p class="card-text text-muted" style="font-size: 16px">
@@ -26,11 +26,11 @@ include_once './Estructura/header.php';
 
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card text-center border-0 shadow-sm h-100">
-                <img src="hydrateee.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="height: 200px; width: 368px;">
+                <img src="assets/img/extract.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="height: 200px; width: 368px;">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Hidratación de Objetos</h5>
+                        <h5 class="card-title fw-bold">Extracción de Datos</h5>
                         <p class="card-text text-muted" style="font-size: 16px">
-                            Con Hydrator, podes llenar objetos a partir de un array de datos, facilitando la manipulación de datos en tu aplicación.
+                        Además de hidratar objetos, el Hydrator también puede extraer datos de un objeto y convertirlo en un array. Esto es útil cuando necesitas preparar datos para almacenarlos en una base de datos o enviarlos a través de una API.
                         </p>
                     </div>
                 </div>

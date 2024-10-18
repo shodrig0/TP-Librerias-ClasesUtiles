@@ -5,7 +5,7 @@ include_once 'Estructura/header.php';
 <div class="container mt-5 p-4" style="max-width: 600px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
     <h2 class="text-center text-success mb-4">Buscar Persona</h2>
 
-    <form onsubmit="return validar()" action="./action/actionBuscarPersona.php" method="POST" id="form">
+    <form onsubmit="return guardarLegajo()" action="./action/actionBuscarPersona.php" method="POST" id="form">
         <div class="mb-3">
             <label for="legajo" class="form-label fw-bold">Número de Legajo</label>
             <input type="number" class="form-control form-control-lg rounded" placeholder="Ej. 4525" id="legajo" name="legajo">
@@ -19,7 +19,7 @@ include_once 'Estructura/header.php';
         </div>
     </form>
 </div>
-<script src="js/validarBusquedaPersona.js"></script>
+<script src="js/validarEliminarPersona.js"></script>
 <?php
 include_once '../../Vista/Estructura/footer.php';
 ?>

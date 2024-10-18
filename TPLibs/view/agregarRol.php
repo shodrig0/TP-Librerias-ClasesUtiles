@@ -38,14 +38,15 @@ $arrayRoles = $objAbmRol->listarRoles();
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success">Agregar</button>
-                    <a href="../" class="btn btn-secondary">
-                        <<Volver>>
+                    <a href="../" class="btn btn-secondary fs-6 w-100 mt-2">
+                        Volver
                     </a>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="js/validarNuevoRol.js"></script>
 <?php
 include_once '../../Vista/Estructura/footer.php';
 ?>

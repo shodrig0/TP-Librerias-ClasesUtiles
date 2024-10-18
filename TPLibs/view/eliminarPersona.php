@@ -16,7 +16,7 @@ include_once 'Estructura/header.php';
         </div>
     </form>
 </div>
-<script src="js/validarEliminarPersona.js"></script>
+<script src="js/validarBusquedaPersona.js"></script>
 <?php
 include_once '../../Vista/Estructura/footer.php';
 ?>
