@@ -101,8 +101,8 @@ echo $data['nombre'];
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card text-center border-0 shadow-sm h-100">
-                    <img src="assets/img/hidratacion.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="height: 200px; width: 368px;">
+                <div class="card text-center border-1 shadow-sm h-100">
+                    <img src="assets/img/hidratacion.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="object-fit: cover; height: 200px; width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Transformación de Datos</h5>
                         <p class="card-text text-muted" style="font-size: 16px">
@@ -113,8 +113,8 @@ echo $data['nombre'];
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card text-center border-0 shadow-sm h-100">
-                <img src="assets/img/extract.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="height: 200px; width: 368px;">
+                <div class="card text-center border-1 shadow-sm h-100">
+                <img src="assets/img/extract.png" class="card-img-top" alt="Hydrator Ejemplo 1" style="object-fit: contain; height: 200px; width: 100%;">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Extracción de Datos</h5>
                         <p class="card-text text-muted" style="font-size: 16px">
